@@ -29,10 +29,12 @@ const isDebug = false;
   ];
 
   const now = new Date();
-  now.setHours(now.getHours() + 9);
-  const until = Math.floor(
-    new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() / 1000,
-  );
+  const until =
+    Math.floor(
+      new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() /
+        1000,
+    ) +
+    15 * 60 * 60;
   const since = until - 24 * 60 * 60;
 
   const getGeneralEvents = (
