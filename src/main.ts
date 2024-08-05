@@ -29,12 +29,10 @@ const isDebug = false;
   ];
 
   const now = new Date();
-  const until =
-    Math.floor(
-      new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() /
-        1000,
-    ) -
-    9 * 60 * 60;
+  now.setHours(now.getHours() + 9);
+  const until = Math.floor(
+    new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() / 1000,
+  );
   const since = until - 24 * 60 * 60;
 
   const getGeneralEvents = (
@@ -170,7 +168,14 @@ const isDebug = false;
         return;
       }
       const sk: Uint8Array = data;
-      await postNostr(new SimplePool(), sk, message, relaysToWrite, urlsSorted, hashtag);
+      await postNostr(
+        new SimplePool(),
+        sk,
+        message,
+        relaysToWrite,
+        urlsSorted,
+        hashtag,
+      );
       console.log('post complete');
     }
     process.exit(0);
