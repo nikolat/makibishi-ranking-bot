@@ -1,12 +1,12 @@
 import * as nip19 from 'nostr-tools/nip19';
-import { finalizeEvent, NostrEvent } from 'nostr-tools/pure';
+import { finalizeEvent, type NostrEvent } from 'nostr-tools/pure';
 import {
   SimplePool,
   useWebSocketImplementation,
   type SubCloser,
 } from 'nostr-tools/pool';
 import WebSocket from 'ws';
-import { Filter } from 'nostr-tools/filter';
+import type { Filter } from 'nostr-tools/filter';
 useWebSocketImplementation(WebSocket);
 
 const isDebug = false;
@@ -130,6 +130,10 @@ const isDebug = false;
           ?.at(1),
       )
       .filter((ev) => ev !== undefined) as string[];
+    if (urls.length === 0) {
+      console.log('0件でした');
+      process.exit(0);
+    }
     const ranking = new Map<string, number>();
     for (const url of urls) {
       if (ranking.has(url)) {
