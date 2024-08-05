@@ -129,7 +129,7 @@ const isDebug = false;
           )
           ?.at(1),
       )
-      .filter((ev) => ev !== undefined);
+      .filter((ev) => ev !== undefined) as string[];
     const ranking = new Map<string, number>();
     for (const url of urls) {
       if (ranking.has(url)) {
@@ -139,7 +139,7 @@ const isDebug = false;
       }
     }
     const hashtag = 'makibishiranking';
-    let message = `${new Date(since * 1000).toLocaleDateString('ja-JP')}のまきびしランキング #${hashtag}\n\n`;
+    let message = `${new Date(until * 1000).toLocaleDateString('ja-JP')}のまきびしランキング #${hashtag}\n\n`;
     const urlsSorted = Array.from(ranking.keys());
     urlsSorted.sort((a, b) => {
       const m = ranking.get(a)!;
