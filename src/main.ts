@@ -120,8 +120,7 @@ const isDebug = false;
 
   const main = async () => {
     const NOSTR_PRIVATE_KEY = process.env.NOSTR_PRIVATE_KEY ?? '';
-    const pool = new SimplePool();
-    const events = await getReactions(pool, relaysToFetch);
+    const events = await getReactions(new SimplePool(), relaysToFetch);
     const urls = events
       .map((ev) =>
         ev.tags
@@ -171,7 +170,7 @@ const isDebug = false;
         return;
       }
       const sk: Uint8Array = data;
-      await postNostr(pool, sk, message, relaysToWrite, urlsSorted, hashtag);
+      await postNostr(new SimplePool(), sk, message, relaysToWrite, urlsSorted, hashtag);
       console.log('post complete');
     }
     process.exit(0);
