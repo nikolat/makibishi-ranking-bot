@@ -163,6 +163,7 @@ const isDebug = false;
       message += `${rankingEmoji.get(rank)} ${ranking.get(url)} ${url}\n`;
       if (index >= 19) break;
     }
+    console.log('message: ', message);
     if (!isDebug) {
       const { type, data } = nip19.decode(NOSTR_PRIVATE_KEY);
       if (type !== 'nsec') {
@@ -171,10 +172,8 @@ const isDebug = false;
       }
       const sk: Uint8Array = data;
       await postNostr(pool, sk, message, relaysToWrite, urlsSorted, hashtag);
-    } else {
-      console.log('message: ', message);
+      console.log('post complete');
     }
-    console.log('post complete');
     process.exit(0);
   };
 
