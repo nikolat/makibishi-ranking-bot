@@ -1,0 +1,31 @@
+{
+  "name": "makibishi-ranking-bot",
+  "version": "0.1.0",
+  "description": "makibishi ranking bot",
+  "keywords": [
+    "nostr"
+  ],
+  "main": "index.js",
+  "license": "CC0-1.0",
+  "author": {
+    "name": "Don"
+  },
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "crawl": "node --loader ts-node/esm src/main.ts",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "type": "module",
+  "dependencies": {
+    "nostr-tools": "^2.7.1",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.12",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
