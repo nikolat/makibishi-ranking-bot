@@ -20,12 +20,10 @@ const isDebug = false;
     'wss://relay-jp.nostr.wirednet.jp/',
     'wss://yabu.me/',
     'wss://r.kojira.io/',
-    'wss://relay.mymt.casa/',
   ];
 
   const relaysToWrite = [
     'wss://relay.nostr.wirednet.jp/',
-    'wss://relay.mymt.casa/',
   ];
 
   const now = new Date();
