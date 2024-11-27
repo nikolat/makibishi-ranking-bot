@@ -19,13 +19,13 @@
   },
   "type": "module",
   "dependencies": {
-    "nostr-tools": "^2.7.1",
+    "nostr-tools": "^2.10.4",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@types/ws": "^8.5.12",
-    "prettier": "^3.3.3",
+    "@types/ws": "^8.5.13",
+    "prettier": "^3.4.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.7.2"
   }
 }
