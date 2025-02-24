@@ -13,19 +13,17 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "crawl": "node --loader ts-node/esm src/main.ts",
+    "crawl": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('ts-node/esm', pathToFileURL('./'));\" ./src/main.ts",
     "lint": "prettier --check .",
     "format": "prettier --write ."
   },
   "type": "module",
   "dependencies": {
-    "nostr-tools": "^2.10.4",
-    "ws": "^8.18.0"
+    "nostr-tools": "^2.10.4"
   },
   "devDependencies": {
-    "@types/ws": "^8.5.13",
-    "prettier": "^3.4.1",
+    "prettier": "^3.5.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }

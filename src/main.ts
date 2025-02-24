@@ -1,9 +1,7 @@
 import * as nip19 from 'nostr-tools/nip19';
 import { finalizeEvent, type NostrEvent } from 'nostr-tools/pure';
-import { SimplePool, useWebSocketImplementation, type SubCloser } from 'nostr-tools/pool';
-import WebSocket from 'ws';
+import { SimplePool, type SubCloser } from 'nostr-tools/pool';
 import type { Filter } from 'nostr-tools/filter';
-useWebSocketImplementation(WebSocket);
 
 const isDebug = false;
 
@@ -56,13 +54,13 @@ const isDebug = false;
     return reactionEventsFetched;
   };
 
-  const postNostr = async (pool: SimplePool, sk: Uint8Array, message: string, relays: string[], urls: string[], hashTag: string) => {
+  const postNostr = async (pool: SimplePool, sk: Uint8Array, content: string, relays: string[], urls: string[], hashTag: string) => {
     const tags = [['t', hashTag], ...urls.map((url) => ['r', url])];
     const unsignedEvent = {
       kind: 1,
       created_at: Math.floor(Date.now() / 1000),
-      tags: tags,
-      content: message,
+      tags,
+      content,
     };
     const signedEvent = finalizeEvent(unsignedEvent, sk);
     const pubs = pool.publish(relays, signedEvent);
@@ -94,11 +92,11 @@ const isDebug = false;
   ]);
 
   const main = async () => {
-    const NOSTR_PRIVATE_KEY = process.env.NOSTR_PRIVATE_KEY ?? '';
-    const events = await getReactions(new SimplePool(), relaysToFetch);
-    const urls = events
+    const NOSTR_PRIVATE_KEY: string = process.env.NOSTR_PRIVATE_KEY ?? '';
+    const events: NostrEvent[] = await getReactions(new SimplePool(), relaysToFetch);
+    const urls: string[] = events
       .map((ev) => ev.tags.find((tag) => tag.length >= 2 && tag[0] === 'r' && URL.canParse(tag[1]))?.at(1))
-      .filter((ev) => ev !== undefined) as string[];
+      .filter((ev) => ev !== undefined);
     if (urls.length === 0) {
       console.log('0件でした');
       process.exit(0);
