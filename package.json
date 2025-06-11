@@ -13,7 +13,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "crawl": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('ts-node/esm', pathToFileURL('./'));\" ./src/main.ts",
+    "crawl": "node --experimental-strip-types --no-warnings=ExperimentalWarning ./src/main.ts",
     "lint": "prettier --check .",
     "format": "prettier --write ."
   },
@@ -22,8 +22,8 @@
     "nostr-tools": "^2.15.0"
   },
   "devDependencies": {
+    "@types/node": "^24.0.1",
     "prettier": "^3.5.3",
-    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
