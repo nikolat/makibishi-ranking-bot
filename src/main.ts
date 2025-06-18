@@ -16,7 +16,13 @@ const isDebug = false;
     'wss://r.kojira.io/',
   ];
 
-  const relaysToWrite = ['wss://relay.nostr.wirednet.jp/', 'wss://n3r.xyz/', 'wss://nrelay.c-stellar.net/'];
+  const relaysToWrite = [
+    'wss://relay.nostr.wirednet.jp/',
+    'wss://n3r.xyz/',
+    'wss://nrelay.c-stellar.net/',
+    'wss://r.bitcoinhold.net/',
+    'wss://nostr.ittanmo.men/',
+  ];
 
   const now = new Date();
   const until = Math.floor(new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() / 1000) + 15 * 60 * 60;
