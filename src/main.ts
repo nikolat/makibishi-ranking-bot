@@ -68,8 +68,9 @@ const isDebug = false;
     };
     const signedEvent = finalizeEvent(unsignedEvent, sk);
     const pubs = pool.publish(relays, signedEvent);
-    await Promise.allSettled(pubs);
+    const res = await Promise.allSettled(pubs);
     pool.close(relays);
+    console.info(res);
   };
 
   const rankingEmoji = new Map<Number, string>([
@@ -157,7 +158,7 @@ const isDebug = false;
         return;
       }
       const sk: Uint8Array = data;
-      await postNostr(new SimplePool(), sk, message, relaysToWrite, urlsSorted, hashtag);
+      await postNostr(pool, sk, message, relaysToWrite, urlsSorted, hashtag);
       console.info('post complete');
     }
     process.exit(0);
