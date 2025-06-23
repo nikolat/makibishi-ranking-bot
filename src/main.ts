@@ -14,13 +14,7 @@ const isDebug = false;
     'wss://yabu.me/',
   ];
 
-  const relaysToWrite = [
-    'wss://relay.nostr.wirednet.jp/',
-    'wss://n3r.xyz/',
-    'wss://nrelay.c-stellar.net/',
-    'wss://r.bitcoinhold.net/',
-    'wss://nostr.ittanmo.men/',
-  ];
+  const relaysToWrite = ['wss://relay.nostr.wirednet.jp/', 'wss://nrelay.c-stellar.net/', 'wss://r.bitcoinhold.net/'];
 
   const now = new Date();
   const until = Math.floor(new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() / 1000) + 15 * 60 * 60;
@@ -104,7 +98,7 @@ const isDebug = false;
     const events: NostrEvent[] = await getReactions(pool, relaysToFetch);
     const urls: string[] = events
       .map((ev) => ev.tags.find((tag) => tag.length >= 2 && tag[0] === 'r' && URL.canParse(tag[1]))?.at(1))
-      .filter((ev) => ev !== undefined);
+      .filter((ev) => ev !== undefined) as string[];
     if (urls.length === 0) {
       console.info('0件でした');
       process.exit(0);
