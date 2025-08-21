@@ -48,7 +48,7 @@ const isDebug = false;
   };
 
   const getReactions = async (pool: SimplePool, relays: string[]): Promise<NostrEvent[]> => {
-    const reactionEventsFetched = await getGeneralEvents(pool, relays, [{ kinds: [17], since, until }]);
+    const reactionEventsFetched = await getGeneralEvents(pool, relays, [{ kinds: [17], '#k': ['web'], since, until }]);
     return reactionEventsFetched;
   };
 
@@ -97,7 +97,7 @@ const isDebug = false;
     poolFetch.trackRelays = true;
     const events: NostrEvent[] = await getReactions(poolFetch, relaysToFetch);
     const urls: string[] = events
-      .map((ev) => ev.tags.find((tag) => tag.length >= 2 && tag[0] === 'r' && URL.canParse(tag[1]))?.at(1))
+      .map((ev) => ev.tags.find((tag) => tag.length >= 2 && tag[0] === 'i' && URL.canParse(tag[1]))?.at(1))
       .filter((ev) => ev !== undefined) as string[];
     if (urls.length === 0) {
       console.info('0件でした');
