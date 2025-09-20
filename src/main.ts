@@ -23,7 +23,7 @@ const isDebug = false;
   const getGeneralEvents = (
     pool: SimplePool,
     relays: string[],
-    filters: Filter[],
+    filter: Filter,
     callbackEvent: Function = () => {},
     autoClose: boolean = true,
   ): Promise<NostrEvent[]> => {
@@ -40,7 +40,7 @@ const isDebug = false;
         }
         resolve(events);
       };
-      const sub: SubCloser = pool.subscribeMany(relays, filters, {
+      const sub: SubCloser = pool.subscribeMany(relays, filter, {
         onevent,
         oneose,
       });
@@ -48,7 +48,7 @@ const isDebug = false;
   };
 
   const getReactions = async (pool: SimplePool, relays: string[]): Promise<NostrEvent[]> => {
-    const reactionEventsFetched = await getGeneralEvents(pool, relays, [{ kinds: [17], '#k': ['web'], since, until }]);
+    const reactionEventsFetched = await getGeneralEvents(pool, relays, { kinds: [17], '#k': ['web'], since, until });
     return reactionEventsFetched;
   };
 
