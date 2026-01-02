@@ -97,8 +97,8 @@ const isDebug = false;
     poolFetch.trackRelays = true;
     const events: NostrEvent[] = await getReactions(poolFetch, relaysToFetch);
     const urls: string[] = events
-      .map((ev) => ev.tags.find((tag) => tag.length >= 2 && tag[0] === 'i' && URL.canParse(tag[1]))?.at(1))
-      .filter((ev) => ev !== undefined) as string[];
+      .map((ev) => ev.tags.find((tag) => tag.length >= 2 && tag[0] === 'i' && ev.content !== '-' && URL.canParse(tag[1]))?.at(1))
+      .filter((url) => url !== undefined);
     if (urls.length === 0) {
       console.info('0件でした');
       process.exit(0);
