@@ -19,11 +19,11 @@
   },
   "type": "module",
   "dependencies": {
-    "nostr-tools": "^2.19.4"
+    "nostr-tools": "2.20.0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.3",
-    "prettier": "^3.7.4",
+    "@types/node": "^25.1.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   }
 }
