@@ -7,14 +7,14 @@ const isDebug = false;
 
 (async () => {
   const relaysToFetch = [
-    'wss://relay.nostr.band/',
+    'wss://relay.primal.net/',
     'wss://nos.lol/',
     'wss://relay.damus.io/',
     'wss://relay.nostr.wirednet.jp/',
     'wss://yabu.me/',
   ];
 
-  const relaysToWrite = ['wss://relay.nostr.wirednet.jp/', 'wss://nrelay.c-stellar.net/', 'wss://r.bitcoinhold.net/'];
+  const relaysToWrite = ['wss://relay.nostr.wirednet.jp/'];
 
   const now = new Date();
   const until = Math.floor(new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() / 1000) + 15 * 60 * 60;
