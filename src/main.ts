@@ -6,13 +6,7 @@ import type { Filter } from 'nostr-tools/filter';
 const isDebug = false;
 
 (async () => {
-  const relaysToFetch = [
-    'wss://relay.primal.net/',
-    'wss://nos.lol/',
-    'wss://relay.damus.io/',
-    'wss://relay.nostr.wirednet.jp/',
-    'wss://yabu.me/',
-  ];
+  const relaysToFetch = ['wss://relay.primal.net/', 'wss://nos.lol/', 'wss://relay.nostr.wirednet.jp/', 'wss://yabu.me/'];
 
   const relaysToWrite = ['wss://relay.nostr.wirednet.jp/'];
 
